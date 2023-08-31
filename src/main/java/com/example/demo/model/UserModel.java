@@ -14,8 +14,6 @@ public class UserModel {
 	private String address;
 	private String email;
 	private int contact;
-	private String occupation;
-	private String review;
 	public UserModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -29,8 +27,6 @@ public class UserModel {
 		this.address = address;
 		this.email = email;
 		this.contact = contact;
-		this.occupation = occupation;
-		this.review = review;
 	}
 	public int getId() {
 		return id;
@@ -68,18 +64,4 @@ public class UserModel {
 	public void setContact(int contact) {
 		this.contact = contact;
 	}
-	public String getOccupation() {
-		return occupation;
-	}
-	public void setOccupation(String occupation) {
-		this.occupation = occupation;
-	}
-	public String getReview() {
-		return review;
-	}
-	public void setReview(String review) {
-		this.review = review;
-	}
-	
-
 }

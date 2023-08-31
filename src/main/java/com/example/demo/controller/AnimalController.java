@@ -19,21 +19,21 @@ import com.example.demo.service.AnimalService;
 
 public class AnimalController {
 	@Autowired
-AnimalService sser;
+	AnimalService sser;
 	
 	@PostMapping("addpet")
 	public AnimalModel add(@RequestBody AnimalModel ss) {
 		return sser.saveinfo(ss);
 	}
-	@PostMapping("addnpet")
-	public List<AnimalModel> addndetails(@RequestBody List<AnimalModel> ss) 
-	{
-		return sser.savedetails(ss);
-	}
 	@GetMapping("showpet")
 	public List<AnimalModel>show()
 	{
 		return sser.showinfo();
+	}
+	@PostMapping("addnpet")
+	public List<AnimalModel> addndetails(@RequestBody List<AnimalModel> ss) 
+	{
+		return sser.savedetails(ss);
 	}
 	@GetMapping("getpet/{id}")
 	public Optional<AnimalModel>getinfo(@PathVariable int id)
@@ -65,6 +65,45 @@ AnimalService sser;
 	public String modifybyid(@PathVariable int id,@RequestBody AnimalModel ss)
 	{
 		return sser.updatebyid(id,ss);
+	}
+	@GetMapping("sorting/{animalname}")
+	public List<AnimalModel>getsortinfo(@PathVariable String animalname)
+	{
+		return sser.sortinfo(animalname);
+	}
+	@GetMapping("paging/{pageno}/{pagesize}/{animalname}")
+	public List<AnimalModel>showpageinfo(@PathVariable int pageno,@PathVariable int pagesize,@PathVariable String animalname)
+	{
+		return sser.getbypage(pageno,pagesize,animalname);
+	}
+	@GetMapping("getor/{s}/{b}")
+	public List<AnimalModel>displayOr(@PathVariable int s,@PathVariable String b)
+	{
+		return sser.getpet(s,b);
+	}
+	@GetMapping("getand/{i}/{n}")
+	public List<AnimalModel>displayAnd(@PathVariable int i,@PathVariable String n)
+	{
+		return sser.getpett(i,n);
+	}
+	@DeleteMapping("deletequery/{id}")
+	public String delstudentdetails(@PathVariable int id)
+	{
+		return sser.delpet(id)+" deleted";
+	}
+	@PutMapping("updatequery/{name}/{id}")
+	public String updatestudentdetails(@PathVariable String name,@PathVariable int id)
+	{
+		return sser.updatepet(name,id)+" updated";
+	}
+	@PostMapping("add")
+	public AnimalModel addpet(@RequestBody AnimalModel ss) {
+		return sser.savepetinfo(ss);
+	}
+	@GetMapping("show")
+	public List<AnimalModel>showpet()
+	{
+		return sser.showpetinfo();
 	}
 	
 }
